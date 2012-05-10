@@ -4,35 +4,28 @@ var express = require('express');
 
 function start (route, handle) {
     var onRequest = function(request, res) {
+        
+      
         var pathname = url.parse(request.url).pathname;
         console.log("request for " + pathname + " recieved.");
             
-        route(handle, pathname, res);       
+        route(handle, pathname, res);
     }
 
-    var app = express.createServer(onRequest).listen(8888);
-    if (app.configure) {
-        console.log('app exists');
-    }
+    var app = express.createServer(onRequest);
+    app.listen(8888);
     
     app.configure(function(){
         app.set('views', __dirname + '/views');
+        console.log(app.settings.views)
         app.set('view engine', 'jade');
+        console.log(app.settings.view_engine);
         app.use(express.bodyParser());
         app.use(express.methodOverride());
         app.use(app.router);
         app.use(express.static(__dirname + '/public'));
       });
-      
-      app.configure('development', function(){
-        app.use(express.errorHandler({ dumpExceptions: true, showStack: true }));
-      });
-      
-      app.configure('production', function(){
-        app.use(express.errorHandler());
-      });
     
-    console.log(app.views)
     console.log("Express server listening on port %d in %s mode", app.address().port, app.settings.env);
 }
 

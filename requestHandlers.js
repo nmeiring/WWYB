@@ -1,5 +1,5 @@
 var home = function(res){
-  res.render('index', { title: 'WWYB?' });
+  res.render('home', { title: 'WWYB?' });
   console.log('homepage rendered');
   //click();
 };
