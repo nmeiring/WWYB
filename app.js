@@ -4,8 +4,7 @@
  */
 
 var express = require('express')
-  , routes = require('./routes')
-  , $ = require('jQuery');
+  , routes = require('./routes');
 
 var app = module.exports = express.createServer();
 
@@ -30,10 +29,7 @@ app.configure('production', function(){
 
 // Routes
 
-
-app.get('/', routes.home);
-app.get('/posts', routes.post);
-
+app.get('/', routes.index);
 
 app.listen(3000);
 console.log("Express server listening on port %d in %s mode", app.address().port, app.settings.env);

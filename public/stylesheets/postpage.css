@@ -3,6 +3,13 @@ body {
     color: #D6FF83;
 }
 
+#back {
+    margin-left: 10%;
+    margin-right: 10%;
+    width: 80%;
+    text-align: center;
+}
+
 #idea_title {
     font-size: 36px;
     width: 80%;
@@ -61,3 +68,4 @@ a {
     height: auto;
     float: right;
     }
+    
